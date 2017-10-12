@@ -1,0 +1,7 @@
+<div class="left">
+  <daypilot-navigator [config]="navigatorConfig" (dateChange)="dateChange()" #navigator></daypilot-navigator>
+</div>
+<div class="right">
+  <daypilot-month [config]="config" [events]="events" (viewChange)="viewChange()" #calendar></daypilot-month>
+</div>
+

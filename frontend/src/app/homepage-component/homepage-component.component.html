@@ -1,0 +1,63 @@
+<mat-toolbar color="primary">
+  <button mat-icon-button (click)="sidenav.toggle()">
+    <mat-icon>menu</mat-icon>
+  </button>
+</mat-toolbar>
+<mat-sidenav-container style="border: 1px solid rgba(0, 0, 0, 0.5);">
+  <mat-sidenav #sidenav mode="over">
+    <mat-nav-list mat-menu>
+      <mat-icon mat-list-item aria-hidden="true">account_circle</mat-icon>
+      <a mat-list-item href="page2.html">Income Management</a>
+      <a mat-list-item href="page3.html">Expense Management</a>
+      <a mat-list-item href="page1.html">Statistic</a>
+      <a mat-list-item href="page2.html">Event</a>
+      <a mat-list-item href="page3.html">Logout</a>
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <!--<div class="app-content">-->
+  <!--<ngx-charts-bar-vertical-->
+  <!--[scheme]="colorScheme"-->
+  <!--[results]="single"-->
+  <!--[gradient]="gradient"-->
+  <!--[xAxis]="showXAxis"-->
+  <!--[yAxis]="showYAxis"-->
+  <!--[legend]="showLegend"-->
+  <!--[showYAxisLabel]="showYAxisLabel"-->
+  <!--[xAxisLabel]="xAxisLabel"-->
+  <!--[yAxisLabel]="yAxisLabel">-->
+  <!--</ngx-charts-bar-vertical>-->
+  <!--</div>-->
+  <!--<div class="app-content">-->
+  <!--<ngx-charts-line-chart-->
+  <!--[scheme]="colorScheme"-->
+  <!--[results]="multi"-->
+  <!--[gradient]="gradient"-->
+  <!--[xAxis]="showXAxis"-->
+  <!--[yAxis]="showYAxis"-->
+  <!--[legend]="showLegend"-->
+  <!--[showXAxisLabel]="showXAxisLabel"-->
+  <!--[xAxisLabel]="xAxisLabel"-->
+  <!--[yAxisLabel]="yAxisLabel"-->
+  <!--[autoScale]="autoScale">-->
+  <!--</ngx-charts-line-chart>-->
+  <!--</div>-->
+
+  <div class="app-content">
+    <app-calendar-component></app-calendar-component>
+  </div>
+  <div class="app-content">
+    <div class="container mt-2 mt-lg-5 mt-md-3 mt-sm-2" align="center">
+      <h3>All transactions</h3>
+      <a class="btn btn-primary btn-md btnInsert" href="#">Add New Transaction</a>
+      <div class="my-lg-3 my-md-2 my-sm-1 my-1 mx-lg-5 mx-sm-1">
+        <input #search class="search form-control" type="text" placeholder="description,date..."
+               [ngModel]="myModel" (ngModelChange)="onSearch($event)"/>
+      </div>
+      <div class="table-responsive">
+        <ng2-smart-table [settings]="settings" [source]="data"
+                         class="table table-sm table-hover table-striped text-center table-responsive"></ng2-smart-table>
+      </div>
+    </div>
+  </div>
+</mat-sidenav-container>

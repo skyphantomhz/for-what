@@ -1,0 +1,21 @@
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+body {
+  font-family: Roboto, Arial, sans-serif;
+}
+
+g text {
+  font-size: 25px;
+  font-weight: bold;
+  font-style: italic;
+}
+
+[_nghost-c8] * {
+  text-align: center;
+}
+[_nghost-c10] table tr td, [_nghost-c10] table tr th {
+  text-align: center;
+}

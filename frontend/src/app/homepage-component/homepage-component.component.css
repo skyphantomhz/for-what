@@ -1,0 +1,115 @@
+.app-content {
+  display: block;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+mat-sidenav {
+  width: 30%;
+}
+
+mat-icon {
+  font-size: 50px;
+  height: inherit;
+  width: inherit;
+}
+
+mat-nav-list {
+  text-align: center;
+}
+
+mat-nav-list a .mat-list-item-content {
+  display: block;
+}
+
+:host /deep/ ng2-smart-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+:host /deep/ ng2-smart-table th {
+  padding: 6px;
+  text-align: left;
+}
+
+:host /deep/ ng2-smart-table td {
+  padding: 6px;
+  text-align: left;
+}
+
+#btnInsert {
+  color: white;
+}
+
+:host /deep/ ng2-smart-table tbody > tr > td:first-child {
+  text-align: center;
+  background-color: #F4F6F8;
+}
+
+@media only screen and (max-width: 500px),
+(min-device-width: 500px) and (max-device-width: 500px) {
+  :host /deep/ mat-sidenav {
+    width: 60%;
+  }
+
+  :host /deep/ ng2-smart-table {
+    display: block;
+  }
+
+  :host /deep/ ng2-smart-table thead {
+    display: block;
+  }
+
+  :host /deep/ ng2-smart-table tbody {
+    display: block;
+  }
+
+  :host /deep/ ng2-smart-table th {
+    display: block;
+  }
+
+  :host /deep/ ng2-smart-table tr {
+    display: block;
+  }
+
+  :host /deep/ ng2-smart-table td {
+    display: block;
+  }
+
+  :host /deep/ ng2-smart-table thead > tr {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+  }
+
+  :host /deep/ ng2-smart-table tr {
+    border: 1px solid #ccc;
+  }
+
+  :host /deep/ ng2-smart-table td {
+    border: none;
+    border-bottom: 1px solid #eee;
+    position: relative;
+    text-align: center;
+  }
+
+  :host /deep/ ng2-smart-table td:before {
+    /* Now like a table header */
+    position: absolute;
+    /* Top/left values mimic padding */
+    top: 6px;
+    left: 6px;
+    /*width: 45%;*/
+    padding-right: 10px;
+    white-space: nowrap;
+    font-weight: bold;
+  }
+
+  :host /deep/ ng2-smart-table td:nth-of-type(1):before {
+    content: "Action: ";
+  }
+}
+
+
+

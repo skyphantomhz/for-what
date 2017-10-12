@@ -1,0 +1,15 @@
+@media only screen and (max-width: 500px),
+(min-device-width: 500px) and (max-device-width: 500px) {
+  :host /deep/ .left {
+    width: 100%;
+  }
+  :host /deep/ .right {
+    clear: both;
+  }
+}
+.left{
+  float: left;
+}
+.right{
+  display: flow-root
+}
