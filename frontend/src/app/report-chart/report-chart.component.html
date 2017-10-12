@@ -1,0 +1,18 @@
+<div class="row" style="padding-top: 10%">
+  <div class=" push-1 col-5 px-0" style="display: block;">
+    <p><strong>Biểu đồ chi tiêu trong tháng</strong></p>
+    <br>
+    <canvas baseChart [datasets]="lineChartData" [labels]="lineChartLabels" [options]="lineChartOptions" [colors]="lineChartColors"
+      [legend]="lineChartLegend" [chartType]="lineChartType" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></canvas>
+  </div>
+
+  <div class="push-1 col-5">
+      <p><strong>Biểu đồ chi tiêu trong năm</strong></p>
+      <br>
+    <div style="display: block">
+      <canvas baseChart [datasets]="barChartData" [labels]="barChartLabels" [options]="barChartOptions" [legend]="barChartLegend"
+        [chartType]="barChartType" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></canvas>
+    </div>
+    <button (click)="randomize()">Update</button>
+  </div>
+</div>

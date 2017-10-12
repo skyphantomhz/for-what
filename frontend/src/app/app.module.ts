@@ -7,11 +7,15 @@ import { RegisterPageComponent } from './register-page/register-page.component';
 import { LoginPageComponent } from './login-page/login-page.component';
 import {MatCheckboxModule,MatInputModule, MatButtonModule,MatFormFieldModule} from '@angular/material';
 import { AppRoutingModule } from './app-routing.module';
+import { ChartsModule } from 'ng2-charts';
+import { ReportChartComponent } from './report-chart/report-chart.component';
+
 @NgModule({
   declarations: [
     AppComponent,
     RegisterPageComponent,
     LoginPageComponent,
+    ReportChartComponent
     
   ],
   imports: [
@@ -22,7 +26,8 @@ import { AppRoutingModule } from './app-routing.module';
     MatInputModule,
     MatCheckboxModule,
     MatButtonModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ChartsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
