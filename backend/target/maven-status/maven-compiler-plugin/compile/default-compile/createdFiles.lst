@@ -1,1 +1,12 @@
+com\cousin\forwhat\entity\Account.class
+com\cousin\forwhat\repository\AccountRepository.class
+com\cousin\forwhat\service\AccountService.class
+com\cousin\forwhat\entity\SessionTransaction.class
+com\cousin\forwhat\controller\AccountController.class
+com\cousin\forwhat\service\AccountServiceImpl.class
+com\cousin\forwhat\repository\SessionTransactionRepository.class
+com\cousin\forwhat\controller\RoutesController.class
+com\cousin\forwhat\WebConfig.class
+com\cousin\forwhat\repository\WalletRepository.class
+com\cousin\forwhat\entity\Wallet.class
 com\cousin\forwhat\ForWhatApplication.class
