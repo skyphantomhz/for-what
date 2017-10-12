@@ -43,13 +43,26 @@
   <!--</ngx-charts-line-chart>-->
   <!--</div>-->
 
-  <div class="app-content">
-    <app-calendar-component></app-calendar-component>
-  </div>
+  <!--<div class="app-content">-->
+  <!--<app-calendar-component></app-calendar-component>-->
+  <!--</div>-->
   <div class="app-content">
     <div class="container mt-2 mt-lg-5 mt-md-3 mt-sm-2" align="center">
       <h3>All transactions</h3>
-      <a class="btn btn-primary btn-md btnInsert" href="#">Add New Transaction</a>
+      <div class="row">
+        <div class="col-12 col-md-6"><a class="btn btn-primary btn-md btnInsert" href="#">Add New Transaction</a></div>
+        <div class="col-12 col-md-6 ">
+          <div class="">
+            <mat-form-field>
+              <mat-select placeholder="Choose month">
+                <mat-option *ngFor="let month of months" [value]="month.value">
+                  {{ month.viewValue }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
       <div class="my-lg-3 my-md-2 my-sm-1 my-1 mx-lg-5 mx-sm-1">
         <input #search class="search form-control" type="text" placeholder="description,date..."
                [ngModel]="myModel" (ngModelChange)="onSearch($event)"/>

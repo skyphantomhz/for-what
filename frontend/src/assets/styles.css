@@ -19,3 +19,7 @@ g text {
 [_nghost-c10] table tr td, [_nghost-c10] table tr th {
   text-align: center;
 }
+body{
+  overflow-y: hidden;
+
+}

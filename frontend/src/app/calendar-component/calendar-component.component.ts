@@ -25,6 +25,7 @@ export class CalendarComponentComponent implements OnInit, AfterViewInit {
   };
   events: any[] = [];
 
+
   constructor(private ds: DataService,private cdr: ChangeDetectorRef) {
   }
 

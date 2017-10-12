@@ -3,6 +3,7 @@
   align-items: center;
   justify-content: center;
   width: 100%;
+  height: 100vh;
 }
 
 mat-sidenav {
@@ -21,6 +22,10 @@ mat-nav-list {
 
 mat-nav-list a .mat-list-item-content {
   display: block;
+}
+
+mat-toolbar{
+  height: 62px;
 }
 
 :host /deep/ ng2-smart-table {
@@ -44,7 +49,6 @@ mat-nav-list a .mat-list-item-content {
 
 :host /deep/ ng2-smart-table tbody > tr > td:first-child {
   text-align: center;
-  background-color: #F4F6F8;
 }
 
 @media only screen and (max-width: 500px),

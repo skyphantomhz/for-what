@@ -87,7 +87,20 @@ export class HomepageComponentComponent implements OnInit {
       date: "22/12/1996"
     }
   ]
-
+  months = [
+    {value: 'jan', viewValue: 'January'},
+    {value: 'feb', viewValue: 'February'},
+    {value: 'mar', viewValue: 'March'},
+    {value: 'apr', viewValue: 'April'},
+    {value: 'may', viewValue: 'May'},
+    {value: 'jun', viewValue: 'June'},
+    {value: 'jul', viewValue: 'July'},
+    {value: 'aug', viewValue: 'August'},
+    {value: 'sep', viewValue: 'September'},
+    {value: 'oct', viewValue: 'October'},
+    {value: 'nov', viewValue: 'November'},
+    {value: 'dec', viewValue: 'December'},
+  ];
   constructor() {
   }
 
