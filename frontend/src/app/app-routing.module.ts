@@ -9,10 +9,7 @@ import { ReportChartComponent } from "./report-chart/report-chart.component";
 
 
 const routes: Routes = [
-  {
-    path: 'homepage',
-    component: HomeComponent
-  },
+
   {
     path: 'chart',
     component: ReportChartComponent
@@ -29,6 +26,10 @@ const routes: Routes = [
   {
     path: 'login',
     component: LoginPageComponent
+  },
+  {
+    path: 'homepage',
+    component: HomeComponent
   },
 ];
 
