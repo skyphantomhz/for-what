@@ -13,12 +13,19 @@ import java.util.List;
 @Transactional
 public class AccountServiceImpl implements AccountService {
 
+//    private static final Logger logger = Logger.getLogger(AccountServiceImpl.class);
 
     @Autowired
     private AccountRepository accountRepository;
 
+//    @Bean
+//    public PasswordEncoder getPasswordEncoder() {
+//        return new BCryptPasswordEncoder();
+//    }
+
     @Override
-    public Account createNewAccount(Account account) {
+    public Account register(Account account) {
+//        account.setPassword(getPasswordEncoder().encode(account.getPassword()));
         return accountRepository.save(account);
     }
 
@@ -27,16 +34,38 @@ public class AccountServiceImpl implements AccountService {
         List<Account> accounts = new ArrayList<>();
         accountRepository.findAll().forEach(accounts::add);
         return accounts;
-
     }
 
     @Override
-    public void deleteAccount(long id) {
-
+    public void deleteAccount(Long id) {
+        Account deleted = accountRepository.findOne(id);
+        accountRepository.delete(deleted);
     }
 
     @Override
-    public Account updateAccount(Account account) {
-        return null;
+    public Account updateAccount(Long id, Account account) {
+        account.setUsernameId(id);
+//        account.setPassword(getPasswordEncoder().encode(account.getPassword()));
+        return accountRepository.save(account);
+    }
+
+    @Override
+    public Account findAccountsByUsername(String username) {
+        return accountRepository.findAccountByUsername(username);
+    }
+
+    @Override
+    public Account findAccountsByUsernameAndPassword(String username, String password) {
+        return accountRepository.findAccountByUsernameAndPassword(username, password);
+    }
+
+    @Override
+    public boolean existUsernameAccount(Account account) {
+        Account ac = accountRepository.existAccount(account.getUsername());
+        if (ac != null) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }

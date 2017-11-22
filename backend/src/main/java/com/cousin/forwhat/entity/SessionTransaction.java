@@ -6,7 +6,7 @@ import javax.persistence.*;
 public class SessionTransaction {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long SessionTransactionId;
 
     @ManyToOne

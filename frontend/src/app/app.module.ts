@@ -45,10 +45,14 @@ import {
   MatTooltipModule,
   MatFormFieldControl,
   MatFormFieldModule
-} from "@angular/material";
-import {AppRoutingModule} from "./app-routing.module";
+} from '@angular/material';
+import {AppRoutingModule} from './app-routing.module';
 
-import {Ng2SmartTableModule} from "ng2-smart-table";
+import {Ng2SmartTableModule} from 'ng2-smart-table';
+import {AuthenticationService} from './service/authentication.service';
+import {LoginService} from './service/login.service';
+import {CheckLoginGuard} from './guards/check-login.guard';
+import {RegisterService} from './service/register.service';
 
 
 @NgModule({
@@ -106,7 +110,7 @@ import {Ng2SmartTableModule} from "ng2-smart-table";
     ReactiveFormsModule,
     Ng2SmartTableModule,
   ],
-  providers: [],
+  providers: [AuthenticationService,LoginService,CheckLoginGuard,RegisterService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
