@@ -5,7 +5,7 @@ import javax.persistence.*;
 @Entity
 public class Wallet {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int walletId;
 
     @OneToOne

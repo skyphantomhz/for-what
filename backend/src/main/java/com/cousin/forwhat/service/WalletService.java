@@ -2,7 +2,6 @@ package com.cousin.forwhat.service;
 
 import com.cousin.forwhat.entity.Account;
 import com.cousin.forwhat.entity.Wallet;
-import com.cousin.forwhat.pojo.ReportInOutComePOJO;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
