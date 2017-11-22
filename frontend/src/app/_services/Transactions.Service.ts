@@ -9,7 +9,7 @@ import {PATHSERVER} from "../_config/VariableGlobal";
 @Injectable()
 export class TransactionService {
   private transactionUrl = PATHSERVER + 'api/transactions'; // TODO take real server url
-
+  d: Date;
   constructor(private http: Http) {
   }
 
@@ -19,12 +19,12 @@ export class TransactionService {
       .catch(this.handleError);
   }
 
-  getTransaction(sessionTransactionId: number): Observable<Transaction> {
-    console.log(this.transactionUrl);
-    return this.http.get(this.transactionUrl + `/${sessionTransactionId}`)
-      .map(res => res.json())
-      .catch(this.handleError);
-  }
+  // getTransaction(sessionTransactionId: number): Observable<Transaction> {
+  //   console.log(this.transactionUrl);
+  //   return this.http.get(this.transactionUrl + `/${sessionTransactionId}`)
+  //     .map(res => res.json())
+  //     .catch(this.handleError);
+  // }
 
   getTransactionUrl(urlShow: string): Observable<Transaction> {
     console.log(this.transactionUrl + `/urlShow/${urlShow}`);
@@ -57,5 +57,22 @@ export class TransactionService {
     }
     console.error(errMsg);
     return Observable.throw(errMsg);
+  }
+  addTransaction(body: any) {
+    this.d = new Date (body.dateTime);
+   // console.log("bodyStrin22: " + body.day);
+    const bodyString = JSON.stringify({
+      type: body.type,
+      desciption: body.desciption,
+      amount: body.amount*1000,
+      datetime: this.d.getDate()+"/"+this.d.getMonth()+"/"+this.d.getFullYear(),
+      usernameId: 1
+    }); // Stringify payload
+    console.log("bodyString: " + bodyString);
+    let headers = new Headers({ 'Content-Type': 'application/json' }); // ... Set content type to JSON
+    let options = new RequestOptions({ headers: headers }); // Create a request option
+    return this.http.post(this.transactionUrl, bodyString, options)
+      .map((res: Response) => res.json())
+      .catch(this.handleError);
   }
 }

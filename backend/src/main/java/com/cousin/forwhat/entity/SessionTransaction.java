@@ -8,7 +8,7 @@ import java.util.Date;
 public class SessionTransaction {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long SessionTransactionId;
 
     @ManyToOne
@@ -27,7 +27,7 @@ public class SessionTransaction {
         SessionTransactionId = sessionTransactionId;
     }
 
-    public long getSessionTransactionId() {
+    public Long getSessionTransactionId() {
         return SessionTransactionId;
     }
 

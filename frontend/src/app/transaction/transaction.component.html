@@ -1,45 +1,51 @@
 <h3 mat-dialog-title>Make a new transaction</h3>
-<mat-dialog-content class="example-form">
+<form [formGroup]="transactionForm" (ngSubmit)="onSubmit(transactionForm, $event)" novalidate>
+  <mat-dialog-content class="example-form">
 
-  <mat-form-field>
-    <mat-select placeholder="Type" >
-      <mat-option *ngFor="let type of types" [value]="type.value">
-        {{ type.viewValue }}
-      </mat-option>
-    </mat-select>
-  </mat-form-field>
-     <mat-form-field hintLabel="Max 50 characters">
-    <input matInput  #input maxlength="50"  placeholder="Desciption" [formControl]="contentFormControl" required>
-     
+    <mat-form-field>
+      <mat-select placeholder="Type" id="type"  formControlName="type" ngModel required>
+        <mat-option *ngFor="let type of types" [value]="type.viewValue">
+          {{ type.viewValue }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field hintLabel="Max 50 characters" id="desciption">
+      <input matInput #input maxlength="50" placeholder="Desciption" class="form-control" formControlName="desciption" ngModel
+        required>
+      <mat-hint align="end">{{input.value?.length || 0}}/50</mat-hint>
+
+      <mat-error *ngIf="contentFormControl.invalid">{{getErrorMessage1()}}
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput id="amount" placeholder="Amount" type="number" class="example-right-align" class="form-control" formControlName="amount"
+        ngModel style="text-align:right" required>
+      <span matPrefix>$&nbsp;</span>
+      <span matSuffix>.000</span>
+      <mat-error *ngIf="amountFormControl.invalid">{{getErrorMessage2()}}
+      </mat-error>
+    </mat-form-field>
+
+
+    <mat-form-field>
+      <input matInput [matDatepicker]="picker" placeholder="Choose a date" formControlName="dateTime" ngModel required>
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker>
+
+      </mat-datepicker>
+      <mat-error *ngIf="dateFormControl.invalid">{{getErrorMessage3()}}
+      </mat-error>
+    </mat-form-field>
+
+  </mat-dialog-content>
+  <div class="form-group">
+<button mat-raised-button color="primary" type="submit">Insert</button>
+    <button mat-raised-button (click)="onNoClick()">Cancel</button>
+  </div>
+  <!-- <md-dialog-actions>
     
-    <mat-hint align="end">{{input.value?.length || 0}}/50</mat-hint>
- 
-    <mat-error *ngIf="contentFormControl.invalid">{{getErrorMessage1()}}
-    </mat-error>
-  </mat-form-field>
-  <mat-form-field>
-    <input matInput placeholder="Amount" type="number" class="example-right-align" [formControl]="amountFormControl " style="text-align:right" required>
-    <span matPrefix>$&nbsp;</span>
-    <span matSuffix>.000</span>
-   <mat-error *ngIf="amountFormControl.invalid">{{getErrorMessage2()}}
-    </mat-error>
-  </mat-form-field>
-
-  <mat-form-field>
-    <input matInput [matDatepicker]="picker" placeholder="Choose a date"  [formControl]="dateFormControl"required>
-    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-    <mat-datepicker #picker>
-
-    </mat-datepicker>
-    <mat-error *ngIf="dateFormControl.invalid">{{getErrorMessage3()}}
-    </mat-error>
-  </mat-form-field>
-
-</mat-dialog-content>
-<md-dialog-actions>
-  <button mat-raised-button [disabled]="checkFullFill" color="primary" (click)="acceptClick()">Insert</button>
-  <button mat-raised-button (click)="onNoClick()">Cancel</button>
-</md-dialog-actions>
+  </md-dialog-actions> -->
+</form>
 <!-- 
 <button mat-raised-button>Insert</button>
 <button mat-raised-button>Cancel</button> -->

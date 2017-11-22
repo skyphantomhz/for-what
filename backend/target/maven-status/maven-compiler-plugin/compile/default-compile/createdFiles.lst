@@ -4,6 +4,7 @@ com\cousin\forwhat\controller\RoutesController.class
 com\cousin\forwhat\service\ReportService.class
 com\cousin\forwhat\repository\WalletRepository.class
 com\cousin\forwhat\ForWhatApplication.class
+com\cousin\forwhat\dto\TransactionDTO.class
 com\cousin\forwhat\entity\Account.class
 com\cousin\forwhat\controller\ReportController.class
 com\cousin\forwhat\repository\AccountRepository.class
