@@ -5,11 +5,11 @@ import {FormsModule, ReactiveFormsModule,NgControl} from '@angular/forms';
 import { AppComponent } from './app.component';
 import { RegisterPageComponent } from './register-page/register-page.component';
 import { LoginPageComponent } from './login-page/login-page.component';
-import { ChartsModule } from 'ng2-charts';
 import { ReportChartComponent } from './report-chart/report-chart.component';
 import { CommonModule } from '@angular/common';
 import { DialogTransactionDialog } from './transaction/transaction.component';
 import { HomeComponent } from './home/home.component';
+import {NgxChartsModule} from '@swimlane/ngx-charts';
 
 import {
   MatAutocompleteModule,
@@ -49,6 +49,8 @@ import {
 import {AppRoutingModule} from "./app-routing.module";
 
 import {Ng2SmartTableModule} from "ng2-smart-table";
+import { ReportService } from './_services/Report.Service';
+import { PullDataReportComponent } from './pull-data-report/pull-data-report.component';
 
 
 @NgModule({
@@ -58,18 +60,19 @@ import {Ng2SmartTableModule} from "ng2-smart-table";
     LoginPageComponent,
     ReportChartComponent,
     DialogTransactionDialog,
-    HomeComponent
+    HomeComponent,
+    PullDataReportComponent
   ],
   entryComponents: [
     DialogTransactionDialog
   ],
   imports: [
+    NgxChartsModule,
     FormsModule, ReactiveFormsModule,
     MatFormFieldModule,
     BrowserAnimationsModule,
     BrowserModule,
     AppRoutingModule,
-    ChartsModule,
     CommonModule,
 	  MatAutocompleteModule,
     MatButtonModule,
@@ -106,7 +109,7 @@ import {Ng2SmartTableModule} from "ng2-smart-table";
     ReactiveFormsModule,
     Ng2SmartTableModule,
   ],
-  providers: [],
+  providers: [ReportService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

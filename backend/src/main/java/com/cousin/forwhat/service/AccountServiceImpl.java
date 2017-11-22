@@ -31,6 +31,11 @@ public class AccountServiceImpl implements AccountService {
     }
 
     @Override
+    public Account findAccount(long id) {
+        return accountRepository.findOne(id);
+    }
+
+    @Override
     public void deleteAccount(long id) {
 
     }
