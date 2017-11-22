@@ -4,7 +4,10 @@ import { DialogTransactionDialog } from "../transaction/transaction.component";
 import { MatDialog } from "@angular/material/dialog";
 import { MatDialogRef } from "@angular/material/dialog";
 import { MAT_DIALOG_DATA } from "@angular/material/dialog";
-
+import {TransactionService} from '../_services/Transactions.Service';
+import { Transaction } from "../_models/transaction";
+import { Router } from "@angular/router";
+import { CustomRenderComponent } from "./CustomRender.component";
 
 @Component({
   selector: 'app-component',
@@ -12,13 +15,14 @@ import { MAT_DIALOG_DATA } from "@angular/material/dialog";
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-
+  transactions: Transaction[];
   source: LocalDataSource;
+  errorMessage: any;
   settings = {
     hideSubHeader: true,
 
     columns: {
-      id: {
+        sessionTransactionId: {
         title: 'Id',
         filter: false
       },
@@ -34,9 +38,11 @@ export class HomeComponent implements OnInit {
         title: 'Type',
         filter: false
       },
-      date: {
+      dateTime: {
         title: 'Date',
-        filter: false
+        filter: false,
+        type: 'custom',
+        renderComponent: CustomRenderComponent
       }
     },
     actions: {
@@ -62,34 +68,6 @@ export class HomeComponent implements OnInit {
       amount: "10000",
       type: "out",
       date: "22/12/1996"
-    },
-    {
-      id: 2,
-      description: "Leanne Graham",
-      amount: "10000",
-      type: "out",
-      date: "22/12/1996"
-    },
-    {
-      id: 3,
-      description: "Leanne Graham",
-      amount: "10000",
-      type: "out",
-      date: "22/12/1996"
-    },
-    {
-      id: 4,
-      description: "Leanne Graham",
-      amount: "10000",
-      type: "out",
-      date: "22/12/1996"
-    },
-    {
-      id: 5,
-      description: "Leanne Graham",
-      amount: "10000",
-      type: "out",
-      date: "22/12/1996"
     }
   ]
   months = [
@@ -106,10 +84,19 @@ export class HomeComponent implements OnInit {
     {value: 'nov', viewValue: 'November'},
     {value: 'dec', viewValue: 'December'},
   ];
-  constructor(public dialog: MatDialog) {
+  constructor(private transactionService: TransactionService, public dialog: MatDialog, private route : Router) {
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
+    this.transactions = [];
+    this.transactionService.getTransactions()
+      .subscribe(
+        transactions => {
+          this.transactions = transactions;
+          this.source = new LocalDataSource(this.transactions);
+        },
+        error => this.errorMessage = <any>error
+      );
   }
   openDialog() {
     const dialogRef = this.dialog.open(DialogTransactionDialog, {
@@ -118,30 +105,33 @@ export class HomeComponent implements OnInit {
     });
   }
   onSearch(query: string = '') {
+
+    
     if (query === '') {
       query = '2';
     }
+ 
     this.source.setFilter([
       {
-        field: 'Id',
+        field: 'sessionTransactionId',
         search: query
       },
       {
-        field: 'Description',
+        field: 'description',
         search: query
       },
       {
-        field: 'Amount',
+        field: 'amount',
         search: query
       },
       {
-        field: 'Type',
+        field: 'type',
         search: query
       },
       {
-        field: 'Date',
+        field: new Date('dateTime').toString(),
         search: query
       }
-    ], true);
+    ], false);
   }
 }

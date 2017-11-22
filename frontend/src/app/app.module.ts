@@ -10,6 +10,7 @@ import { CommonModule } from '@angular/common';
 import { DialogTransactionDialog } from './transaction/transaction.component';
 import { HomeComponent } from './home/home.component';
 import {NgxChartsModule} from '@swimlane/ngx-charts';
+import { CustomRenderComponent } from './home/CustomRender.component';
 
 import {
   MatAutocompleteModule,
@@ -51,6 +52,8 @@ import {AppRoutingModule} from "./app-routing.module";
 import {Ng2SmartTableModule} from "ng2-smart-table";
 import { ReportService } from './_services/Report.Service';
 import { PullDataReportComponent } from './pull-data-report/pull-data-report.component';
+import { TransactionService } from './_services/Transactions.Service';
+
 
 
 @NgModule({
@@ -61,10 +64,12 @@ import { PullDataReportComponent } from './pull-data-report/pull-data-report.com
     ReportChartComponent,
     DialogTransactionDialog,
     HomeComponent,
-    PullDataReportComponent
+    PullDataReportComponent,
+    CustomRenderComponent
   ],
   entryComponents: [
-    DialogTransactionDialog
+    DialogTransactionDialog,
+    CustomRenderComponent
   ],
   imports: [
     NgxChartsModule,
@@ -109,7 +114,7 @@ import { PullDataReportComponent } from './pull-data-report/pull-data-report.com
     ReactiveFormsModule,
     Ng2SmartTableModule,
   ],
-  providers: [ReportService],
+  providers: [ReportService, TransactionService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
