@@ -53,7 +53,10 @@ import {Ng2SmartTableModule} from "ng2-smart-table";
 import { ReportService } from './_services/Report.Service';
 import { PullDataReportComponent } from './pull-data-report/pull-data-report.component';
 import { TransactionService } from './_services/Transactions.Service';
-
+import {AuthenticationService} from './_services/authentication.service';
+import {LoginService} from './_services/login.service';
+import {CheckLoginGuard} from './guards/check-login.guard';
+import {RegisterService} from './_services/register.service';
 
 
 @NgModule({
@@ -114,7 +117,7 @@ import { TransactionService } from './_services/Transactions.Service';
     ReactiveFormsModule,
     Ng2SmartTableModule,
   ],
-  providers: [ReportService, TransactionService],
+  providers: [ReportService, TransactionService,AuthenticationService,LoginService,CheckLoginGuard,RegisterService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -5,15 +5,18 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service
 public interface AccountService {
-    Account createNewAccount(Account account);
+    Account register(Account account);
 
     List<Account> findAllAccounts();
 
-    Account findAccount(long id);
+    void deleteAccount(Long id);
 
-    void deleteAccount(long id);
+    Account updateAccount(Long id,Account account);
 
-    Account updateAccount(Account account);
+    Account findAccountsByUsername(String username);
+
+    Account findAccountsByUsernameAndPassword(String username, String password);
+
+    boolean existUsernameAccount(Account account);
 }

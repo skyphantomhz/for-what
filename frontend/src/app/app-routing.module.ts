@@ -5,14 +5,14 @@ import { RegisterPageComponent } from "./register-page/register-page.component";
 
 import { HomeComponent } from "./home/home.component";
 import { PullDataReportComponent } from './pull-data-report/pull-data-report.component';
-
+import {CheckLoginGuard} from './guards/check-login.guard';
 
 
 const routes: Routes = [
 
   {
     path: 'chart',
-    component: PullDataReportComponent
+    component: PullDataReportComponent, canActivate: [CheckLoginGuard]
   },
   
   {
@@ -29,7 +29,7 @@ const routes: Routes = [
   },
   {
     path: 'homepage',
-    component: HomeComponent
+    component: HomeComponent, canActivate: [CheckLoginGuard]
   },
 ];
 
