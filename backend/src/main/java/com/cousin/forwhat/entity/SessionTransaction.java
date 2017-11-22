@@ -1,21 +1,30 @@
 package com.cousin.forwhat.entity;
 
 import javax.persistence.*;
+import java.util.Calendar;
+import java.util.Date;
 
 @Entity
 public class SessionTransaction {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue
     private Long SessionTransactionId;
 
     @ManyToOne
     private Account account;
     private String type;
     private long amount;
-    private String datetime;
+
+    private String description;
+
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date dateTime;
 
     public SessionTransaction() {
+    }
+    public void setSessionTransactionId(Long sessionTransactionId) {
+        SessionTransactionId = sessionTransactionId;
     }
 
     public long getSessionTransactionId() {
@@ -50,11 +59,20 @@ public class SessionTransaction {
         this.amount = amount;
     }
 
-    public String getDatetime() {
-        return datetime;
+
+    public Date getDateTime() {
+        return dateTime;
     }
 
-    public void setDatetime(String datetime) {
-        this.datetime = datetime;
+    public void setDateTime(Date dateTime) {
+        this.dateTime = dateTime;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }

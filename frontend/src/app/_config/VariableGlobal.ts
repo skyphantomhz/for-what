@@ -1,1 +1,1 @@
-export const PATHSERVER = 'http://localhost:8090/';
+export const PATHSERVER = 'http://localhost:8080/'

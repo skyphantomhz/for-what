@@ -2,16 +2,41 @@
   <div class=" push-1 col-5 px-0" style="display: block;">
     <p><strong>Biểu đồ chi tiêu trong tháng</strong></p>
     <br>
-    <canvas baseChart [datasets]="lineChartData" [labels]="lineChartLabels" [options]="lineChartOptions" [colors]="lineChartColors"
-      [legend]="lineChartLegend" [chartType]="lineChartType" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></canvas>
+    <ngx-charts-line-chart
+    [view]="view"
+    [scheme]="colorScheme"
+    [results]="reportByMonth"
+    [gradient]="gradient"
+    [xAxis]="showXAxis"
+    [yAxis]="showYAxis"
+    [legend]="showLegend"
+    [showXAxisLabel]="showXAxisLabel"
+    [showYAxisLabel]="showYAxisLabel"
+    [xAxisLabel]="xAxisLabel"
+    [yAxisLabel]="yAxisLabel"
+    [autoScale]="autoScale"
+    (select)="onSelect($event)">
+    </ngx-charts-line-chart>
   </div>
 
   <div class="push-1 col-5">
       <p><strong>Biểu đồ chi tiêu trong năm</strong></p>
       <br>
     <div style="display: block">
-      <canvas baseChart [datasets]="barChartData" [labels]="barChartLabels" [options]="barChartOptions" [legend]="barChartLegend"
-        [chartType]="barChartType" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></canvas>
+      <ngx-charts-bar-horizontal-2d
+      [view]="view"
+      [scheme]="colorScheme"
+      [results]="reportByYear"
+      [gradient]="gradient"
+      [xAxis]="showXAxis"
+      [yAxis]="showYAxis"
+      [legend]="showLegend"
+      [showXAxisLabel]="showXAxisLabel"
+      [showYAxisLabel]="showYAxisLabel"
+      [xAxisLabel]="Month"
+      [yAxisLabel]="Amount"
+      (select)="onSelect($event)">
+    </ngx-charts-bar-horizontal-2d>
     </div>
   </div>
 </div>

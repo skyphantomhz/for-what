@@ -4,9 +4,6 @@ import { DialogTransactionDialog } from "../transaction/transaction.component";
 import { MatDialog } from "@angular/material/dialog";
 import { MatDialogRef } from "@angular/material/dialog";
 import { MAT_DIALOG_DATA } from "@angular/material/dialog";
-import {LoginService} from "../service/login.service";
-import {AuthenticationService} from "../service/authentication.service";
-import {Router} from "@angular/router";
 
 
 @Component({
@@ -109,7 +106,7 @@ export class HomeComponent implements OnInit {
     {value: 'nov', viewValue: 'November'},
     {value: 'dec', viewValue: 'December'},
   ];
-  constructor(public dialog: MatDialog,private loginService: LoginService, private authenticationService: AuthenticationService, private router: Router) {
+  constructor(public dialog: MatDialog) {
   }
 
   ngOnInit() {
@@ -146,12 +143,5 @@ export class HomeComponent implements OnInit {
         search: query
       }
     ], true);
-  }
-
-  logOut() {
-    // this.loginService.SetLogin(false);
-    this.authenticationService.logout();
-    // localStorage.removeItem('currentUser');
-    this.router.navigate(['login']);
   }
 }

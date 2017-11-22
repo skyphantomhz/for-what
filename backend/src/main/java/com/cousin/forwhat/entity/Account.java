@@ -8,8 +8,9 @@ import javax.persistence.Id;
 @Entity
 public class Account {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue
     private Long usernameId;
+
     private String username;
     private String password;
     private String email;
@@ -46,4 +47,7 @@ public class Account {
         this.email = email;
     }
 
+    public Account() {
+
+    }
 }
