@@ -1,8 +1,0 @@
-
-<div *ngIf="reportByMonth && reportByYear;else other_content">
-    <app-report-chart [reportByMonth]="reportByMonth" [reportByYear]="reportByYear">Loading...</app-report-chart>
-</div>
-
-<ng-template #other_content>Can't full data from server! Try again late.</ng-template>
-
-
