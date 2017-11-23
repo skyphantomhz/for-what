@@ -3,5 +3,6 @@ export class Transaction {
     type: String;
     desciption: String;
     amount: number;
-    dateTime:number;
+    dateTime:Date;
+    usernameId: number;
 }

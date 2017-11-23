@@ -1,5 +1,6 @@
 package com.cousin.forwhat.service;
 
+import com.cousin.forwhat.DTO.TransactionDTO;
 import com.cousin.forwhat.pojo.ReportByMonthPOJO;
 import com.cousin.forwhat.entity.SessionTransaction;
 import com.cousin.forwhat.pojo.ReportInOutComePOJO;
@@ -10,7 +11,7 @@ import java.util.List;
 
 @Service
 public interface SessionTransactionService {
-    SessionTransaction createNewSessionTransaction(SessionTransaction sessionTransaction);
+
 
     List<SessionTransaction> findAllSessionTransactions();
 
@@ -19,4 +20,11 @@ public interface SessionTransactionService {
     void deleteSessionTransaction(long id);
 
     SessionTransaction updateSessionTransaction(SessionTransaction sessionTransaction);
+    TransactionDTO createNewSessionTransaction(TransactionDTO transactionDTO);
+
+    void deleteSessionTransaction(Long id);
+
+    TransactionDTO updateSessionTransaction(Long id,TransactionDTO transactionDTO);
+
+    TransactionDTO getTransactionById(Long id);
 }
