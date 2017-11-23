@@ -10,11 +10,14 @@ import { ReportByMonthPOJO } from '../_models/ReportByMonthPOJO';
 export class PullDataReportComponent implements OnInit {
   reportByMonth: string;
   reportByYear: string;
+  checklenght: boolean;
   ngOnInit(): void {
    
   }
   constructor(private reportService :ReportService) {
-    this.reportService.getReportByMonth(1)
+    this.checklenght=false;
+    let userId = parseInt(localStorage.getItem('usernameId'));
+    this.reportService.getReportByMonth(userId)
       .subscribe(
         reportByMonths => {
           this.reportByMonth = reportByMonths;
@@ -22,7 +25,7 @@ export class PullDataReportComponent implements OnInit {
         },
         error => console.log(<any>error)
       );
-    this.reportService.getReportYear(1)
+    this.reportService.getReportYear(userId)
       .subscribe(
         reportByYear => {
           this.reportByYear = reportByYear;

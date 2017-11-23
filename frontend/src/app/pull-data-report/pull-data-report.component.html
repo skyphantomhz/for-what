@@ -1,8 +1,22 @@
+<mat-toolbar color="primary">
+    <button mat-icon-button (click)="sidenav.toggle()">
+        <mat-icon>menu</mat-icon>
+    </button>
+</mat-toolbar>
+<mat-sidenav-container style="border: 1px solid rgba(0, 0, 0, 0.5);">
+    <mat-sidenav #sidenav mode="over">
+        <mat-nav-list mat-menu>
+            <mat-icon mat-list-item aria-hidden="true">account_circle</mat-icon>
+            <a mat-list-item routerLink="/homepage" routerLinkActive="active">Management</a>
+            <a mat-list-item routerLink="/chart" routerLinkActive="active">Chart</a>
+            <a mat-list-item href="#">Logout</a>
+        </mat-nav-list>
+    </mat-sidenav>
+    <div class="app-content">
+        <div *ngIf="reportByMonth && reportByYear;else other_content">
+            <app-report-chart [reportByMonth]="reportByMonth" [reportByYear]="reportByYear">Loading...</app-report-chart>
+        </div>
 
-<div *ngIf="reportByMonth && reportByYear;else other_content">
-    <app-report-chart [reportByMonth]="reportByMonth" [reportByYear]="reportByYear">Loading...</app-report-chart>
-</div>
-
-<ng-template #other_content>Can't full data from server! Try again late.</ng-template>
-
-
+        <ng-template #other_content>Can't full data from server! Try again late.</ng-template>
+    </div>
+</mat-sidenav-container>

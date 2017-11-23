@@ -80,6 +80,7 @@ public class AccountController {
             produces = MediaType.APPLICATION_JSON_VALUE,
             consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> login(@Validated @RequestBody Account account) throws ErrorException {
+        Account accountReturn;
         if (StringUtils.isEmpty(account.getUsername().trim()) || StringUtils.isEmpty(account.getPassword().trim())) {
             throw new ErrorException("Username hoặc Password bị trống");
         } else if (accountService.existUsernameAccount(account)) {
@@ -89,7 +90,7 @@ public class AccountController {
         } else if (accountService.findAccountsByUsernameAndPassword((account.getUsername().trim()), (account.getPassword().trim())) == null) {
             throw new ErrorException("Account không tồn tại");
         }
-        return new ResponseEntity<>(true, HttpStatus.OK);
+        return new ResponseEntity<>(accountService.findAccountsByUsername(account.getUsername()), HttpStatus.OK);
     }
 
     @ExceptionHandler(Exception.class)

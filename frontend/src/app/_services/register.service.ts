@@ -3,6 +3,7 @@ import {Headers, Http, RequestOptions, Response} from '@angular/http';
 import {Observable} from 'rxjs/Rx';
 import 'rxjs/add/operator/map';
 import {PATHSERVER} from '../_config/VariableGlobal';
+import {AccountUser} from '../_models/accountuser'
 
 @Injectable()
 export class RegisterService {
@@ -12,7 +13,7 @@ export class RegisterService {
   constructor(private http: Http) {
   }
 
-  register(body: any) {
+  register(body: any):  Observable<AccountUser> {
     const bodyString = JSON.stringify({
       username: body.username,
       password: body.password,

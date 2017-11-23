@@ -13,7 +13,7 @@ import java.util.List;
 public interface SessionTransactionService {
 
 
-    List<SessionTransaction> findAllSessionTransactions();
+    List<SessionTransaction> findAllSessionTransactionsByUsername(long usernameId);
 
     SessionTransaction findSessionTransaction(long id);
 

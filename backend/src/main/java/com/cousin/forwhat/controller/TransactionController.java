@@ -21,9 +21,9 @@ public class TransactionController {
     private SessionTransactionService sessionTransactionService;
 
     @CrossOrigin
-    @GetMapping()
-    public ResponseEntity getAllSessionTransaction() {
-        return new ResponseEntity<>(sessionTransactionService.findAllSessionTransactions(), HttpStatus.OK);
+    @GetMapping(value = "/{usernameId}")
+    public ResponseEntity getAllSessionTransactionByUsernameId(@PathVariable("usernameId") long usernameId) {
+        return new ResponseEntity<>(sessionTransactionService.findAllSessionTransactionsByUsername(usernameId), HttpStatus.OK);
     }
 
     @CrossOrigin

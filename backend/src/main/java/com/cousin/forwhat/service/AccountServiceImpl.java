@@ -61,7 +61,7 @@ public class AccountServiceImpl implements AccountService {
 
     @Override
     public boolean existUsernameAccount(Account account) {
-        Account ac = accountRepository.existAccount(account.getUsername());
+        Account ac = accountRepository.existAccount(account.getUsername(), account.getPassword());
         if (ac != null) {
             return true;
         } else {

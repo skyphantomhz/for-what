@@ -29,9 +29,9 @@ public class SessionTransactionServiceImpl implements SessionTransactionService 
     private SessionTransactionRepository sessionTransactionRepository;
 
     @Override
-    public List<SessionTransaction> findAllSessionTransactions() {
+    public List<SessionTransaction> findAllSessionTransactionsByUsername(long usernameId) {
         List<SessionTransaction> sessionTransactions = new ArrayList<>();
-        sessionTransactionRepository.findAll().forEach(sessionTransactions::add);
+        sessionTransactionRepository.findTransactionById(usernameId).forEach(sessionTransactions::add);
         return sessionTransactions;
     }
 

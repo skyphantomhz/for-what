@@ -14,6 +14,6 @@ public interface AccountRepository extends CrudRepository<Account, Long> {
 
     Account findAccountByUsername(String username);
 
-    @Query(value = "SELECT * FROM account WHERE username = :username LIMIT 1", nativeQuery = true)
-    Account existAccount(@Param("username") String username);
+    @Query(value = "SELECT * FROM account WHERE username = :username and password = :password  LIMIT 1", nativeQuery = true)
+    Account existAccount(@Param("username") String username,@Param("password") String password);
 }

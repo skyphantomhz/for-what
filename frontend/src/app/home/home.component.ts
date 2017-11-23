@@ -89,9 +89,8 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.transactions = [];
-    this.transactionService.getTransactions()
-      .subscribe(
-        transactions => {
+    this.transactionService.getTransactions(parseInt(localStorage.getItem('usernameId')))
+      .subscribe( transactions => {
           this.transactions = transactions;
           this.source = new LocalDataSource(this.transactions);
         },

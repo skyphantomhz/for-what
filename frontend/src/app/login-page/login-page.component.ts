@@ -34,16 +34,20 @@ export class LoginPageComponent implements OnInit {
     this.loading = true;
     this.authenticationService.login(login.value)
       .subscribe(result => {
-        // console.log(result);
+
         console.log("res:" + JSON.parse(JSON.stringify(result))["message"]);
-        if (result !== true) {
+        if (result.usernameId == null) {
           // login failed
           login.reset();
           this.errorMessage = JSON.parse(JSON.stringify(result))["message"];
           this.loading = false;
         } else {
           // login successful
-          localStorage.setItem('currentUser', JSON.stringify({username: login.value.username}));
+          console.log(JSON.stringify(result));
+          localStorage.setItem('currentUser', 'true');
+          localStorage.setItem('usernameId', result.usernameId.toString());
+          localStorage.setItem('username', result.username.toString());
+          localStorage.setItem('email', result.email.toString());
           if (localStorage.getItem('currentUser')) {
             this.loginService.SetLogin(true);
           } else {

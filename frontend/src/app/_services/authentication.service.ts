@@ -3,6 +3,7 @@ import {Http, Headers, Response, RequestOptions} from '@angular/http';
 import {Observable} from 'rxjs/Rx';
 import 'rxjs/add/operator/map';
 import {PATHSERVER} from '../_config/VariableGlobal';
+import {AccountUser} from '../_models/accountuser'
 
 @Injectable()
 export class AuthenticationService {
@@ -17,7 +18,7 @@ export class AuthenticationService {
     this.token = currentUser && currentUser.token;
   }
 
-  login(data: any): Observable<boolean> {
+  login(data: any): Observable<AccountUser> {
     const body = JSON.stringify(data);
     console.log(body);
     const headers = new Headers({'Content-Type': 'application/json'}); // ... Set content type to JSON
@@ -28,6 +29,9 @@ export class AuthenticationService {
   logout(): void {
     // clear token remove user from local storage to log user out
     localStorage.removeItem('currentUser');
+    localStorage.removeItem('usernameId');
+    localStorage.removeItem('username');
+    localStorage.removeItem('email');
   }
 
   private handleError(error: Response | any) {

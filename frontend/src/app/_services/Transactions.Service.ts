@@ -13,8 +13,8 @@ export class TransactionService {
   constructor(private http: Http) {
   }
 
-  getTransactions(): Observable<Transaction[]> {
-    return this.http.get(this.transactionUrl)
+  getTransactions(usernameId:number): Observable<Transaction[]> {
+    return this.http.get(this.transactionUrl+`/${usernameId}`)
       .map(res => res.json())
       .catch(this.handleError);
   }
@@ -65,8 +65,8 @@ export class TransactionService {
       type: body.type,
       desciption: body.desciption,
       amount: body.amount*1000,
-      datetime: this.d.getDate()+"/"+this.d.getMonth()+"/"+this.d.getFullYear(),
-      usernameId: 1
+      datetime: this.d.getDate()+"/"+(this.d.getMonth()+1)+"/"+this.d.getFullYear(),
+      usernameId: localStorage.getItem('usernameId')
     }); // Stringify payload
     console.log("bodyString: " + bodyString);
     let headers = new Headers({ 'Content-Type': 'application/json' }); // ... Set content type to JSON

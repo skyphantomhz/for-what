@@ -43,7 +43,9 @@ export class RegisterPageComponent implements OnInit {
           this.errorMessage = json["message"];
           this.router.navigate(['/register']);
         } else {
-          localStorage.setItem('currentUser', JSON.stringify({username: registerForm.value.username}));
+          localStorage.setItem('usernameId', json.usernameId.toString());
+          localStorage.setItem('username', json.username.toString());
+          localStorage.setItem('email', json.email.toString());
           if (localStorage.getItem('currentUser')) {
             this.loginService.SetLogin(true);
           } else {
